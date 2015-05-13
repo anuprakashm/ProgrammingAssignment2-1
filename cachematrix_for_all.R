@@ -34,7 +34,7 @@ cacheSolve <- function(mat) {
   if (!is.null(detmat)) {
     if (detmat == 0) {
       message("Cached message: The matrix is non invertible since determinant is zero")
-      return(numeric())
+      return(matrix())
     }
   }
   
@@ -42,7 +42,7 @@ cacheSolve <- function(mat) {
   if (!is.null(rowcolmat)) {
     if (rowcolmat == FALSE) {
       message("Cached message: The matrix is non invertible since row numbers not equal to column numbers")
-      return(numeric())
+      return(matrix())
     }
   }
   
@@ -58,7 +58,7 @@ cacheSolve <- function(mat) {
   if (nrow(matdata) != ncol(matdata)) {
     message("The matrix is non invertible since row numbers not equal to column numbers")
     mat$setrowcol(FALSE)
-    return(numeric())
+    return(matrix())
   }
   mat$setrowcol(TRUE)
   
@@ -66,7 +66,7 @@ cacheSolve <- function(mat) {
   mat$setdet(detdata)
   if (detdata == 0) {
     message("The matrix is non invertible since determinant is zero")
-    return(numeric())
+    return(matrix())
   }
   
   invmat <- solve(matdata)
