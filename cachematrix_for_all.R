@@ -1,3 +1,13 @@
+## There are two functions created to cache the inverse of the matrix. The first function (makeCacheMatrix()) is to create a vector of functions
+## to be used to set a matrix and other functions to be used by the second function(cacheSolve()) to create and cache the 
+## inverse of the matrix. The result for matrix inverse will be stored in cache when run first and from the next run the 
+## inverse will be pulled from cache until the matrix to be inversed is updated using the setmat function. Appropriate message 
+## will be displayed if the matrix is not invertible. 
+## The functions can be used as follows:
+## 
+
+## Write a short comment describing this function
+
 makeCacheMatrix <- function(mat = matrix()) {
   invmat <- NULL
   det <- NULL
