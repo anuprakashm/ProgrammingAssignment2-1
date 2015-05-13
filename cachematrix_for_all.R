@@ -73,15 +73,19 @@ makeCacheMatrix <- function(mat = matrix()) {
 cacheSolve <- function(mat) {
   
   detmat <- mat$getdet()
-  if (detmat == 0) {
+  if (!is.null(detmat)) {
+    if (detmat == 0) {
       message("Cached message: The matrix is non invertible since determinant is zero")
-      return(matrix())
+      return(numeric())
+    }
   }
   
   rowcolmat <- mat$getrowcol()
-  if (rowcolmat == FALSE) {
-      message("Cached message: The matrix is non invertible since it is not a square matrix")
-      return(matrix())
+  if (!is.null(rowcolmat)) {
+    if (rowcolmat == FALSE) {
+      message("Cached message: The matrix is non invertible since row numbers not equal to column numbers")
+      return(numeric())
+    }
   }
   
   invmat <- mat$getinv()
@@ -93,9 +97,9 @@ cacheSolve <- function(mat) {
   matdata <- mat$getmat()
   
   if (nrow(matdata) != ncol(matdata)) {
-    message("The matrix is non invertible since it is not a square matrix")
+    message("The matrix is non invertible since row numbers not equal to column numbers")
     mat$setrowcol(FALSE)
-    return(matrix())
+    return(numeric())
   }
   mat$setrowcol(TRUE)
   
@@ -103,7 +107,7 @@ cacheSolve <- function(mat) {
   mat$setdet(detdata)
   if (detdata == 0) {
     message("The matrix is non invertible since determinant is zero")
-    return(matrix())
+    return(numeric())
   }
   
   invmat <- solve(matdata)
