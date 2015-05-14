@@ -70,7 +70,7 @@ makeCacheMatrix <- function(mat = matrix()) {
 ## Find the inverse of the matrix using solve(). Set inverse using setinv() function in makeCacheMatrix() and retun the 
 ## matrix inverse
 
-cacheSolve <- function(mat) {
+cacheSolve <- function(mat, ...) {
   
   detmat <- mat$getdet()
   if (!is.null(detmat)) {
@@ -110,7 +110,7 @@ cacheSolve <- function(mat) {
     return(matrix())
   }
   
-  invmat <- solve(matdata)
+  invmat <- solve(matdata, ...)
   mat$setinv(invmat)
   return(invmat)
 }
