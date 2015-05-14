@@ -83,7 +83,7 @@ cacheSolve <- function(mat) {
   rowcolmat <- mat$getrowcol()
   if (!is.null(rowcolmat)) {
     if (rowcolmat == FALSE) {
-      message("Cached message: The matrix is non invertible since row numbers not equal to column numbers")
+      message("Cached message: The matrix is non invertible since it is not a square matrix")
       return(matrix())
     }
   }
@@ -97,7 +97,7 @@ cacheSolve <- function(mat) {
   matdata <- mat$getmat()
   
   if (nrow(matdata) != ncol(matdata)) {
-    message("The matrix is non invertible since row numbers not equal to column numbers")
+    message("The matrix is non invertible since it is not a square matrix")
     mat$setrowcol(FALSE)
     return(matrix())
   }
