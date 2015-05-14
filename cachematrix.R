@@ -2,9 +2,9 @@
 ## vector of functions to be used to set a matrix and other functions to be used by the second function(cacheSolve()) to 
 ## create, cache the inverse and return the inverse of the matrix. The result for matrix inverse will be stored in cache when 
 ## run for first time and from the next run the inverse will be pulled from cache until the matrix to be inversed is updated 
-## using the setmat function. 
+## using the setmat() function. 
 ## This functions will work only for invertible matrix. Invertible matrix check is included in the R source
-## "cachematrix_advanced.R" present in the same github folder.
+## "cachematrix_advanced.R" which is present in the same github folder.
 
 ## The functions can be used as follows:
 ## 1 ) Source the functions R script containing the functions makeCacheMatrix() and cacheSolve(). For example, If cachematrix.R
@@ -25,7 +25,6 @@
 
 makeCacheMatrix <- function(mat = matrix()) {
   invmat <- NULL
-  
   setmat <- function(temp) {
     mat <<- temp
     invmat <<- NULL
@@ -39,11 +38,10 @@ makeCacheMatrix <- function(mat = matrix()) {
 ## cacheSolve() function does the following:
 ## Get the cached inverse matrix using getinv() function in makeCacheMatrix(). If the cahced inverse is not NULL then 
 ## return the inverse matrix
-## Find the inverse of the matrix using solve(). Cache inverse using setinv() function in makeCacheMatrix() and retun the 
-## matrix inverse
+## if getinv() returns NULL, then find the inverse of the matrix using solve(). Cache inverse using setinv() function in
+## makeCacheMatrix() and retun the matrix inverse
 
 cacheSolve <- function(mat, ...) {
-  
   invmat <- mat$getinv()
   if (!is.null(invmat)) {
     message("Getting matrix inverse from cache")
