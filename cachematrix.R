@@ -24,15 +24,15 @@
 ## 4 ) getinv() -> This function will get the inverse of the matrix
 
 makeCacheMatrix <- function(mat = matrix()) {
-  invmat <- NULL
-  setmat <- function(temp) {
-    mat <<- temp
-    invmat <<- NULL
-  }
-  getmat <- function() mat
-  setinv <- function(inverse) invmat <<- inverse
-  getinv <- function() invmat
-  list(setmat = setmat, getmat = getmat, setinv = setinv, getinv = getinv)
+        invmat <- NULL
+        setmat <- function(temp) {
+                mat <<- temp
+                invmat <<- NULL
+        }
+        getmat <- function() mat
+        setinv <- function(inverse) invmat <<- inverse
+        getinv <- function() invmat
+        list(setmat = setmat, getmat = getmat, setinv = setinv, getinv = getinv)
 } 
 
 ## cacheSolve() function does the following:
@@ -42,13 +42,13 @@ makeCacheMatrix <- function(mat = matrix()) {
 ## makeCacheMatrix() and retun the matrix inverse
 
 cacheSolve <- function(mat, ...) {
-  invmat <- mat$getinv()
-  if (!is.null(invmat)) {
-    message("Getting matrix inverse from cache")
-    return(invmat)
-  }
-  matdata <- mat$getmat()
-  invmat <- solve(matdata, ...)
-  mat$setinv(invmat)
-  return(invmat)
+        invmat <- mat$getinv()
+        if (!is.null(invmat)) {
+                message("Getting matrix inverse from cache")
+                return(invmat)
+        }
+        matdata <- mat$getmat()
+        invmat <- solve(matdata, ...)
+        mat$setinv(invmat)
+        return(invmat)
 }
